@@ -71,7 +71,7 @@ let baseMaps = {
 let map = L.map('mapid', {
     center: [44.0, -80.0],
     zoom: 2,
-    layers: [light]
+    layers: [dark]
 })
 // Pass our map layers into our layers control and add the layers control to the map.
 L.control.layers(baseMaps).addTo(map);
@@ -84,12 +84,13 @@ let torontoData = "https://raw.githubusercontent.com/DALeske/Mapping_Earthquakes
 // Grabbing our GeoJSON data.
 d3.json(torontoData).then(function(data) {
     console.log(data);
-  // Creating a GeoJSON layer with the retrieved data.
+    // Creating a GeoJSON layer with the retrieved data.
   L.geoJSON(data, {
+      color:"yellow",
+      weight: 2,
     onEachFeature: function(feature, layer) {
-        //console.log(layer);
-        layer.bindPopup("<h2>Destination: "+feature.properties.src+"<hr>"+"Equipment: "+feature.properties.equipment+"</h2>");
-    }
+       layer.bindPopup("<h2>Destination: "+feature.properties.src+"<hr>"+"Equipment: "+feature.properties.equipment+"</h2>");
+    },
 }).addTo(map);
 });
 
