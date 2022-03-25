@@ -153,20 +153,10 @@ let myStyle = {
     console.log(data);
     // Creating a GeoJSON layer with the retrieved data.
   L.geoJSON(data, {
-      style: myStyle}).addTo(map);
+      style: myStyle}).addTo(tectonicPlates);
 
-
-
-
-
-
-
-
-
-
-
-
-
+      // Then we add the earthquake layer to our map.
+      tectonicPlates.addTo(map);    
 
 
   });
